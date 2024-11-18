@@ -1,4 +1,4 @@
-﻿namespace CodedVector.Common.Async;
+﻿namespace VectorCode.Common.Async;
 
 /// <summary>
 /// Useful Async Collection Extenion methods

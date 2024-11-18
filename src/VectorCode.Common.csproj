@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>CodedVector.Common</PackageId>
+    <PackageId>VectorCode.Common</PackageId>
     <Description>Common code for reuse</Description>
-    <Authors>Andy Glass, CodedVector</Authors>
-    <Company>CodedVector</Company>
+    <Authors>Andy @ VectorCode</Authors>
+    <Company>VectorCode</Company>
     <Copyright></Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/andyglasses/CodedVector.Common</RepositoryUrl>
+    <RepositoryUrl>https://github.com/andyglasses/VectorCode.Common</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>common;library</PackageTags>
     <Title>Common</Title>
@@ -23,7 +23,7 @@
     <!-- Optional: Detect breaking changes from a previous version -->
     <!-- <PackageValidationBaselineVersion>1.0.0</PackageValidationBaselineVersion> -->
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <PackageProjectUrl>https://github.com/andyglasses/CodedVector.Common</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/andyglasses/VectorCode.Common</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

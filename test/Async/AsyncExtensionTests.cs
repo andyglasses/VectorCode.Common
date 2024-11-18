@@ -1,9 +1,9 @@
 ﻿using Azure;
-using CodedVector.Common.Async;
+using VectorCode.Common.Async;
 using FluentAssertions;
 using Moq;
 
-namespace CodedVector.Common.Test.Async;
+namespace VectorCode.Common.Test.Async;
 
 [TestFixture]
 public class AsyncExtensionsTests
@@ -14,7 +14,7 @@ public class AsyncExtensionsTests
   {
     // Arrange
     var sourceList = new List<int> { 1, 2, 3 };
-    var pageCollection = Page<int>.FromValues(sourceList, null, new Mock<Response>().Object);
+    var pageCollection = Page<int>.FromValues(sourceList, null, new Mock<Azure.Response>().Object);
     var asyncCollection = AsyncPageable<int>.FromPages(new[] { pageCollection });
 
     // Act
@@ -30,7 +30,7 @@ public class AsyncExtensionsTests
     // Arrange
     var sourceList = new List<int> { 1, 2, 3 };
     var expectedList = new List<string> { "m1", "m2", "m3" };
-    var pageCollection = Page<int>.FromValues(sourceList, null, new Mock<Response>().Object);
+    var pageCollection = Page<int>.FromValues(sourceList, null, new Mock<Azure.Response>().Object);
     var asyncCollection = AsyncPageable<int>.FromPages(new[] { pageCollection });
 
     // Act
@@ -46,7 +46,7 @@ public class AsyncExtensionsTests
     // Arrange
     var sourceList = new List<string> { "1", "2", null!, "3" };
     var expectedList = new List<string> { "m1", "m2", "m3" };
-    var pageCollection = Page<string>.FromValues(sourceList, null, new Mock<Response>().Object);
+    var pageCollection = Page<string>.FromValues(sourceList, null, new Mock<Azure.Response>().Object);
     var asyncCollection = AsyncPageable<string>.FromPages(new[] { pageCollection });
 
     // Act
@@ -62,7 +62,7 @@ public class AsyncExtensionsTests
     // Arrange
     var sourceList = new List<int> { 1, 2, 3 };
     var expectedList = new List<string> { "m1", "m3" };
-    var pageCollection = Page<int>.FromValues(sourceList, null, new Mock<Response>().Object);
+    var pageCollection = Page<int>.FromValues(sourceList, null, new Mock<Azure.Response>().Object);
     var asyncCollection = AsyncPageable<int>.FromPages(new[] { pageCollection });
 
     // Act

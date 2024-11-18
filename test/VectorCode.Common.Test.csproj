@@ -21,11 +21,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\CodedVector.Common.csproj" />
+    <ProjectReference Include="..\src\VectorCode.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage" />
   </ItemGroup>
 
 </Project>
