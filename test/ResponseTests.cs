@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace VectorCode.Common.Test;
+﻿namespace VectorCode.Common.Test;
 
 [TestFixture]
 public class ResponseExtensionTests
@@ -14,7 +12,7 @@ public class ResponseExtensionTests
     var response = Response.Builder.Successful();
 
     // Assert
-    response.Success.Should().BeTrue();
+    Assert.That(response.Success, Is.True);
   }
 
   [Test]
@@ -31,8 +29,8 @@ public class ResponseExtensionTests
     var response = Response.Builder.Failed(errors);
 
     // Assert
-    response.Success.Should().BeFalse();
-    response.Errors.Should().BeEquivalentTo(errors);
+    Assert.That(response.Success, Is.False);
+    Assert.That(response.Errors, Is.EquivalentTo(errors));
   }
 
   [Test]
@@ -45,8 +43,8 @@ public class ResponseExtensionTests
     var response = Response.Builder.Successful(data);
 
     // Assert
-    response.Success.Should().BeTrue();
-    response.Data.Should().BeEquivalentTo(data);
+    Assert.That(response.Success, Is.True);
+    Assert.That(response.Data, Is.EqualTo(data));
   }
 
   [Test]
@@ -63,8 +61,8 @@ public class ResponseExtensionTests
     var response = Response.Builder.Failed<string>(errors);
 
     // Assert
-    response.Success.Should().BeFalse();
-    response.Errors.Should().BeEquivalentTo(errors);
+    Assert.That(response.Success, Is.False);
+    Assert.That(response.Errors, Is.EquivalentTo(errors));
   }
 
 

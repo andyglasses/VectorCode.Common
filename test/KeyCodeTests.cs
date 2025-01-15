@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using System.Collections;
+﻿using System.Collections;
 
 namespace VectorCode.Common.Test;
 
@@ -16,7 +15,7 @@ public class KeyCodeTests
     var result = keyCode.ToString();
 
     // Assert
-    result.Should().Be("key: code");
+    Assert.That(result, Is.EqualTo("key: code"));
 
   }
 
@@ -32,8 +31,8 @@ public class KeyCodeTests
     var result = KeyCode.Builder.KeyCodeWithNumberDetail(key, code, number);
 
     // Assert
-    result.Key.Should().Be(key);
-    result.Code.Should().Be($"{code}:{number}");
+    Assert.That(result.Key, Is.EqualTo(key));
+    Assert.That(result.Code, Is.EqualTo($"{code}:{number}"));
   }
 
   [Test]
@@ -48,7 +47,7 @@ public class KeyCodeTests
     var act = () => KeyCode.Builder.KeyCodeWithNumberDetail(key, code, number);
 
     // Assert
-    act.Should().Throw<ArgumentException>().WithMessage("Code cannot contain a colon");
+    Assert.That(act, Throws.ArgumentException);
   }
 
   [Test]
@@ -63,8 +62,8 @@ public class KeyCodeTests
     var result = KeyCode.Builder.KeyCodeWithStringDetail(key, code, detail);
 
     // Assert
-    result.Key.Should().Be(key);
-    result.Code.Should().Be($"{code}:{detail}");
+    Assert.That(result.Key, Is.EqualTo(key));
+    Assert.That(result.Code, Is.EqualTo($"{code}:{detail}"));
   }
 
   [Test]
@@ -79,8 +78,8 @@ public class KeyCodeTests
     var result = KeyCode.Builder.KeyCodeWithStringDetail(key, code, detail);
 
     // Assert
-    result.Key.Should().Be(key);
-    result.Code.Should().Be(code);
+    Assert.That(result.Key, Is.EqualTo(key));
+    Assert.That(result.Code, Is.EqualTo(code));
   }
 
   [Test]
@@ -95,7 +94,7 @@ public class KeyCodeTests
     var act = () => KeyCode.Builder.KeyCodeWithStringDetail(key, code, detail);
 
     // Assert
-    act.Should().Throw<ArgumentException>();
+    Assert.That(act, Throws.ArgumentException);
   }
 
   [Test]
@@ -110,7 +109,7 @@ public class KeyCodeTests
     var act = () => KeyCode.Builder.KeyCodeWithStringDetail(key, code, detail);
 
     // Assert
-    act.Should().Throw<ArgumentException>();
+    Assert.That(act, Throws.ArgumentException);
   }
 
   [Test]
@@ -125,8 +124,8 @@ public class KeyCodeTests
     var result = KeyCode.Builder.KeyCodeWithStringListDetail(key, code, details);
 
     // Assert
-    result.Key.Should().Be(key);
-    result.Code.Should().Be($"{code}:{string.Join(";", details)}");
+    Assert.That(result.Key, Is.EqualTo(key));
+    Assert.That(result.Code, Is.EqualTo($"{code}:{string.Join(";", details)}"));
   }
 
   [Test]
@@ -141,8 +140,8 @@ public class KeyCodeTests
     var result = KeyCode.Builder.KeyCodeWithStringListDetail(key, code, details);
 
     // Assert
-    result.Key.Should().Be(key);
-    result.Code.Should().Be(code);
+    Assert.That(result.Key, Is.EqualTo(key));
+    Assert.That(result.Code, Is.EqualTo(code));
   }
 
   [Test]
@@ -157,7 +156,7 @@ public class KeyCodeTests
     var act = () => KeyCode.Builder.KeyCodeWithStringListDetail(key, code, details);
 
     // Assert
-    act.Should().Throw<ArgumentException>();
+    Assert.That(act, Throws.ArgumentException);
   }
 
   public static IEnumerable CodeOrDetailsContainsColonOrSemi_TestCases

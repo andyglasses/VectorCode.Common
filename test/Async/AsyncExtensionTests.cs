@@ -1,6 +1,5 @@
 ﻿using Azure;
 using VectorCode.Common.Async;
-using FluentAssertions;
 using Moq;
 
 namespace VectorCode.Common.Test.Async;
@@ -21,7 +20,7 @@ public class AsyncExtensionsTests
     var actual = await asyncCollection.ToListAsync();
 
     // Assert
-    actual.Should().BeEquivalentTo(sourceList);
+    Assert.That(actual, Is.EquivalentTo(sourceList));
   }
 
   [Test]
@@ -37,11 +36,11 @@ public class AsyncExtensionsTests
     var actual = await asyncCollection.ToListAsync(i => $"m{i}");
 
     // Assert
-    actual.Should().BeEquivalentTo(expectedList);
+    Assert.That(actual, Is.EquivalentTo(expectedList));
   }
 
   [Test]
-  public async Task ToListAsync_WehnUsingMapping_ShouldIgnoreSourceNulls()
+  public async Task ToListAsync_WhenUsingMapping_ShouldIgnoreSourceNulls()
   {
     // Arrange
     var sourceList = new List<string> { "1", "2", null!, "3" };
@@ -53,11 +52,11 @@ public class AsyncExtensionsTests
     var actual = await asyncCollection.ToListAsync(i => $"m{i}");
 
     // Assert
-    actual.Should().BeEquivalentTo(expectedList);
+    Assert.That(actual, Is.EquivalentTo(expectedList));
   }
 
   [Test]
-  public async Task ToListAsync_WehnUsingMapping_ShouldIgnoreMappedNulls()
+  public async Task ToListAsync_WhenUsingMapping_ShouldIgnoreMappedNulls()
   {
     // Arrange
     var sourceList = new List<int> { 1, 2, 3 };
@@ -69,6 +68,6 @@ public class AsyncExtensionsTests
     var actual = await asyncCollection.ToListAsync(i => i == 2 ? null! :  $"m{i}");
 
     // Assert
-    actual.Should().BeEquivalentTo(expectedList);
+    Assert.That(actual, Is.EquivalentTo(expectedList));
   }
 }

@@ -9,18 +9,18 @@ public static class ListComparison
   /// Compares two lists and returns the items that are in both, deleted in the new list, and added in the new list
   /// </summary>
   /// <typeparam name="T">List type</typeparam>
-  /// <param name="origionalList">The origonal list</param>
+  /// <param name="originalList">The origonal list</param>
   /// <param name="newList">The new list</param>
-  /// <param name="toHashable">A method to create a hashable string</param>
+  /// <param name="toHash">A method to create a hashable string</param>
   /// <returns></returns>
-  public static (List<T> InBoth, List<T> DeletedInNew, List<T>AddedInNew) ComputeListDif<T>(this List<T> origionalList, List<T> newList, Func<T, string> toHashable)
+  public static (List<T> InBoth, List<T> DeletedInNew, List<T>AddedInNew) ComputeListDifference<T>(this List<T> originalList, List<T> newList, Func<T, string> toHash)
   {
-    var origionalHashSet = new HashSet<string>(origionalList.Select(toHashable));
-    var newHashSet = new HashSet<string>(newList.Select(toHashable));
+    var origionalHashSet = new HashSet<string>(originalList.Select(toHash));
+    var newHashSet = new HashSet<string>(newList.Select(toHash));
 
-    var inBoth = origionalHashSet.Intersect(newHashSet).Select(hash => origionalList.First(item => toHashable(item) == hash)).ToList();
-    var deletedInNew = origionalHashSet.Except(newHashSet).Select(hash => origionalList.First(item => toHashable(item) == hash)).ToList();
-    var addedInNew = newHashSet.Except(origionalHashSet).Select(hash => newList.First(item => toHashable(item) == hash)).ToList();
+    var inBoth = origionalHashSet.Intersect(newHashSet).Select(hash => originalList.First(item => toHash(item) == hash)).ToList();
+    var deletedInNew = origionalHashSet.Except(newHashSet).Select(hash => originalList.First(item => toHash(item) == hash)).ToList();
+    var addedInNew = newHashSet.Except(origionalHashSet).Select(hash => newList.First(item => toHash(item) == hash)).ToList();
 
     return (inBoth, deletedInNew, addedInNew);
 

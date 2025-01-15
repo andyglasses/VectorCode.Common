@@ -6,14 +6,14 @@ namespace VectorCode.Common.Test;
 public class ListComparisonTests
 {
   [Test]
-  public void ComputeListDif_WhenCalled_ReturnsInBothDeletedInNewAndAddedInNew()
+  public void ComputeListDifference_WhenCalled_ReturnsInBothDeletedInNewAndAddedInNew()
   {
     // Arrange
     var origionalList = new List<string> { "a", "b", "c" };
     var newList = new List<string> { "b", "c", "d" };
     Func<string, string> toHashable = (item) => item;
     // Act
-    var result = ListComparison.ComputeListDif(origionalList, newList, toHashable);
+    var result = ListComparison.ComputeListDifference(origionalList, newList, toHashable);
     // Assert
     Assert.That(result.InBoth, Is.EquivalentTo(new List<string> { "b", "c" }));
     Assert.That(result.DeletedInNew, Is.EquivalentTo(new List<string> { "a" }));
