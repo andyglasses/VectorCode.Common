@@ -34,6 +34,20 @@ public partial class Response
     }
 
     /// <summary>
+    /// Create a failed response with a single error
+    /// </summary>
+    /// <param name="error">The error</param>
+    /// <returns></returns>
+    public static Response Failed(KeyCode error)
+    {
+      return new Response()
+      {
+        Success = false,
+        Errors = new List<KeyCode>() { error }
+      };
+    }
+
+    /// <summary>
     /// Create a successful response with data
     /// </summary>
     /// <typeparam name="T">The payload type</typeparam>
@@ -60,6 +74,21 @@ public partial class Response
       {
         Success = false,
         Errors = errors
+      };
+    }
+
+    /// <summary>
+    /// Create a failed payload response with a single error
+    /// </summary>
+    /// <typeparam name="T">The payload type</typeparam>
+    /// <param name="error">The error</param>
+    /// <returns></returns>
+    public static Response<T> Failed<T>(KeyCode error)
+    {
+      return new Response<T>()
+      {
+        Success = false,
+        Errors = new List<KeyCode>() { error }
       };
     }
   }
